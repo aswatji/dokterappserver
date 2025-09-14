@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Realtime Chat Demo</title>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  </head>
+  <body>
+    <h2>Realtime Chat Demo</h2>
+    <div>
+      <input id="sender_id" placeholder="Sender ID" />
+      <input id="receiver_id" placeholder="Receiver ID" />
+      <input id="message" placeholder="Type a message..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+    <ul id="chat"></ul>
+    <script>
+      // Ganti URL jika server dihosting di CapRover
+      const socket = io("http://localhost:3000");
+
+      socket.on("connect", () => {
+        console.log("Connected to server");
+      });
+
+      socket.on("chat_message", (data) => {
+        const li = document.createElement("li");
+        li.textContent = `[${data.created_at}] ${data.sender_id} → ${data.receiver_id}: ${data.message}`;
+        document.getElementById("chat").appendChild(li);
+      });
+
+      function sendMessage() {
+        const sender_id = document.getElementById("sender_id").value;
+        const receiver_id = document.getElementById("receiver_id").value;
+        const message = document.getElementById("message").value;
+        socket.emit("chat_message", { sender_id, receiver_id, message });
+        document.getElementById("message").value = "";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "dokterappserver",
+  "version": "1.0.0",
+  "description": "1. Copy file `.env.example` menjadi `.env` dan isi dengan konfigurasi PostgreSQL Anda.\r 2. Install dependencies:\r    ```\r    npm install express pg dotenv\r    ```\r 3. Jalankan server:\r    ```\r    node index.js\r    ```",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "pg": "^8.16.3",
+    "socket.io": "^4.8.1"
+  }
+}

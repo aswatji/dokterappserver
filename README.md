@@ -13,11 +13,13 @@
    ```
 
 ## Struktur Awal
+
 - `index.js` : Entry point server
 - `db.js` : Koneksi PostgreSQL
 - `routes/user.js` : Endpoint user (akan dikembangkan)
 
 ## Endpoint Awal
+
 - `GET /api/users` : Cek endpoint user
 
 Siap dikembangkan untuk fitur pasien & dokter selanjutnya.
